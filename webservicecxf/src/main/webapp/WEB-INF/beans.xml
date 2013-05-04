@@ -10,7 +10,7 @@
 
 	<jaxws:endpoint 
 	  id="helloWorld" 
-	  implementor="br.com.ismael.HelloWorldImpl" 
-	  address="/HelloWorld" />
+	  implementor="br.com.ismael.ConsultaJogoImpl" 
+	  address="/ConsultaJogo" />
 	  
 </beans>
