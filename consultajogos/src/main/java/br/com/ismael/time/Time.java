@@ -30,4 +30,9 @@ public class Time {
     this.nome = nome;
   }
 
+  @Override
+  public String toString() {
+    return this.getNome();
+  }
+
 }
