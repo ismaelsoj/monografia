@@ -1,7 +1,7 @@
 package br.com.ismael;
 
 import javax.jws.WebService;
-import br.com.ismael.jogo.Jogo;
+import br.com.ismael.Jogo;
 
 @WebService(endpointInterface = "br.com.ismael.ConsultaJogo")
 public class ConsultaJogoImpl implements ConsultaJogo {

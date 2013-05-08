@@ -4,7 +4,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
-import br.com.ismael.jogo.Jogo;
+import br.com.ismael.Jogo;
 
 @WebService
 public interface ConsultaJogo {

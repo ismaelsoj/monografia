@@ -1,7 +1,7 @@
 package br.com.ismael;
 
 import org.junit.Test;
-import br.com.ismael.jogo.Jogo;
+import br.com.ismael.Jogo;
 
 public class ConsultaJogoImplTest {
 
