@@ -62,9 +62,6 @@ public class ClienteCXF {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        /*
-         * Instancia o objeto que será responsável por criar os clientes dinamicamente
-         */
         DynamicClientFactory factory = DynamicClientFactory.newInstance();
         // Cria o cliente através do endereço do WSDL
         Client client = factory.createClient("http://localhost:8080/webservicecxf/ConsultaJogo?wsdl");
