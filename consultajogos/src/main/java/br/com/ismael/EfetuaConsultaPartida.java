@@ -1,6 +1,6 @@
 package br.com.ismael;
 
-import br.com.ismael.Jogo;
+import br.com.ismael.Partida;
 
 /**
  * Classe que consulta o resultado de um jogo.
@@ -8,7 +8,7 @@ import br.com.ismael.Jogo;
  * @author Ismael
  * 
  */
-public class EfetuaConsultaJogo {
+public class EfetuaConsultaPartida {
 
   /**
    * Através do nome dos times envolvidos e da cidade onde foi realizado o confronto (opcional), retorna os dados
@@ -17,10 +17,10 @@ public class EfetuaConsultaJogo {
    * @param nomeTime1
    * @param nomeTime2
    * @param cidade
-   * @return Objeto {@link Jogo} contendo as principais informações do confronto selecionado.
+   * @return Objeto {@link Partida} contendo as principais informações do confronto selecionado.
    */
-  public Jogo consultaJogo(String time1, String time2, String cidade) {
-    return new Jogo(time1, time2, "2x1", cidade, "Amistoso",
+  public Partida consultaPartida(String time1, String time2, String cidade) {
+    return new Partida(time1, time2, "2x1", cidade, "Amistoso",
         "Foi um jogo muito truncado, com muitas faltas e expulsões");
   }
 

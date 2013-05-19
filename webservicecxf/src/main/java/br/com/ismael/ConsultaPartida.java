@@ -4,13 +4,13 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
-import br.com.ismael.Jogo;
+import br.com.ismael.Partida;
 
 @WebService
-public interface ConsultaJogo {
+public interface ConsultaPartida {
 
   @WebMethod
-  Jogo consultaJogo(@WebParam(name = "nomeTime1") @XmlElement(required = true) String nomeTime1,
+  Partida consultaPartida(@WebParam(name = "nomeTime1") @XmlElement(required = true) String nomeTime1,
       @WebParam(name = "nomeTime2") @XmlElement(required = true) String nomeTime2,
       @WebParam(name = "cidade") @XmlElement(required = false) String cidade);
 }

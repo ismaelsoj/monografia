@@ -35,7 +35,7 @@ public class ClienteCXF {
   private JButton cancelar;
 
   public ClienteCXF() {
-    this.frame = new JFrame("Consulta de jogos");
+    this.frame = new JFrame("Consulta de partidas de futebol");
     this.panel = new JPanel();
     this.panelTimes = new JPanel();
     this.panelResultado = new JPanel();
@@ -64,28 +64,30 @@ public class ClienteCXF {
       public void actionPerformed(ActionEvent e) {
         DynamicClientFactory factory = DynamicClientFactory.newInstance();
         // Cria o cliente através do endereço do WSDL
-        Client client = factory.createClient("http://localhost:8080/webservicecxf/ConsultaJogo?wsdl");
+        Client client = factory.createClient("http://localhost:8080/webservicecxf/ConsultaPartida?wsdl");
         try {
           /*
-           * Invoca o método através do nome e informa os parâmetros necessários para a execução do mesmo
+           * Invoca o serviço através do nome da operação e informa os parâmetros necessários para a execução do mesmo
            */
-          Object[] obj = client.invoke("consultaJogo", "Galo", "Cruzeiro", null);
+          Object[] obj = client.invoke("consultaPartida", "Galo", "Cruzeiro", null);
           for (Object object : obj) {
             StringBuffer buffer = new StringBuffer();
-            buffer.append("Time 1: " + ((Jogo) object).getTime1());
+            buffer.append("Time 1: " + ((Partida) object).getTime1());
             buffer.append("\n");
-            buffer.append("Time 2: " + ((Jogo) object).getTime2());
+            buffer.append("Time 2: " + ((Partida) object).getTime2());
             buffer.append("\n");
-            buffer.append("Resultado: " + ((Jogo) object).getResultado());
+            buffer.append("Resultado: " + ((Partida) object).getResultado());
             buffer.append("\n");
-            buffer.append("Cidade: " + ((Jogo) object).getCidade());
+            buffer.append("Cidade: ");
+            if (((Partida) object).getCidade() != null) {
+              buffer.append(((Partida) object).getCidade());
+            }
             buffer.append("\n");
-            buffer.append("Motivo: " + ((Jogo) object).getMotivo());
+            buffer.append("Motivo: " + ((Partida) object).getMotivo());
             buffer.append("\n");
-            buffer.append("Informações Adicionais: " + ((Jogo) object).getInformacoesAdicionais());
+            buffer.append("Informações Adicionais: " + ((Partida) object).getInformacoesAdicionais());
             JOptionPane.showMessageDialog(null, buffer.toString(), "RESULTADO DA CONSULTA",
                 JOptionPane.INFORMATION_MESSAGE);
-            frame.pack();
           }
         } catch (Exception e1) {
           e1.printStackTrace();

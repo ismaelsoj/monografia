@@ -6,7 +6,7 @@ package br.com.ismael;
  * @author Ismael
  * 
  */
-public class Jogo {
+public class Partida {
 
   private String time1;
   private String time2;
@@ -15,7 +15,7 @@ public class Jogo {
   private String motivo;
   private String informacoesAdicionais;
 
-  public Jogo(String time1, String time2, String resultado, String cidade, String motivo, String informacoesAdicionais) {
+  public Partida(String time1, String time2, String resultado, String cidade, String motivo, String informacoesAdicionais) {
     this.time1 = time1;
     this.time2 = time2;
     this.resultado = resultado;
@@ -24,7 +24,7 @@ public class Jogo {
     this.informacoesAdicionais = informacoesAdicionais;
   }
 
-  public Jogo() {
+  public Partida() {
   }
 
   /*
