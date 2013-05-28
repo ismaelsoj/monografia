@@ -1,3 +1,5 @@
+package br.com.ismael;
+
 import java.util.GregorianCalendar;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
