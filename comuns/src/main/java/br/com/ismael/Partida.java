@@ -1,5 +1,7 @@
 package br.com.ismael;
 
+import java.util.GregorianCalendar;
+
 /**
  * Classe que representa um jogo de futebol.
  * 
@@ -14,10 +16,13 @@ public class Partida {
   private String cidade;
   private String motivo;
   private String informacoesAdicionais;
+  private GregorianCalendar data;
 
-  public Partida(String time1, String time2, String resultado, String cidade, String motivo, String informacoesAdicionais) {
+  public Partida(String time1, String time2, String resultado, GregorianCalendar data, String cidade, String motivo,
+      String informacoesAdicionais) {
     this.time1 = time1;
     this.time2 = time2;
+    this.data = data;
     this.resultado = resultado;
     this.cidade = cidade;
     this.motivo = motivo;
@@ -82,6 +87,14 @@ public class Partida {
   public String toString() {
     return this.getTime1() + " x " + this.getTime2() + ": " + this.getResultado() + " - " + this.getCidade() + " - "
         + this.getMotivo() + " - " + this.getInformacoesAdicionais();
+  }
+
+  public GregorianCalendar getData() {
+    return data;
+  }
+
+  public void setData(GregorianCalendar data) {
+    this.data = data;
   }
 
 }

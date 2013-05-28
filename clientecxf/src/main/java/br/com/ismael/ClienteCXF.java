@@ -69,7 +69,7 @@ public class ClienteCXF {
           /*
            * Invoca o serviço através do nome da operação e informa os parâmetros necessários para a execução do mesmo
            */
-          Object[] obj = client.invoke("consultaPartida", "Galo", "Cruzeiro", null);
+          Object[] obj = client.invoke("consultaPartida", "Atético-MG", "Cruzeiro", null);
           for (Object object : obj) {
             StringBuffer buffer = new StringBuffer();
             buffer.append("Time 1: " + ((Partida) object).getTime1());
