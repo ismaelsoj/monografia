@@ -4,18 +4,16 @@ import java.util.GregorianCalendar;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.xml.bind.annotation.XmlElement;
 import br.com.ismael.EfetuaConsultaPartida;
 import br.com.ismael.Partida;
 
-@WebService
+@WebService(serviceName = "ConsultaPartida")
 public class ConsultaPartida {
 
-  @WebMethod
-  public Partida consultaPartida(@WebParam(name = "nomeTime1") @XmlElement(required = true) String nomeTime1,
-      @WebParam(name = "nomeTime2") @XmlElement(required = true) String nomeTime2,
-      @WebParam(name = "data") @XmlElement(required = true) GregorianCalendar data,
-      @WebParam(name = "cidade") @XmlElement(required = false) String cidade) {
+  @WebMethod(operationName = "consultaPartida")
+  public Partida consultaPartida(@WebParam(name = "nomeTime1") String nomeTime1,
+      @WebParam(name = "nomeTime2") String nomeTime2, @WebParam(name = "data") GregorianCalendar data,
+      @WebParam(name = "cidade") String cidade) {
     return new EfetuaConsultaPartida().consultaPartida(nomeTime1, nomeTime2, data, cidade);
   }
 }

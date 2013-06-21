@@ -25,7 +25,7 @@
     </dependency>
     <dependency>
       <groupId>br.com.ismael</groupId>
-      <artifactId>consultajogos</artifactId>
+      <artifactId>consultapartidas</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>

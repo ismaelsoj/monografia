@@ -10,11 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.endpoint.dynamic.DynamicClientFactory;
 
 /**
- * Classe que invoca um método de um web service de forma dinâmica através de um WSDL previamente publicado.
+ * Classe que invoca um método de um web service de forma dinâmica atrav
+ * és de um WSDL previamente publicado.
  * 
  * @author Ismael
  * 
@@ -27,8 +30,10 @@ public class ClienteCXF {
   private JPanel panelResultado;
   private JLabel labelTime1;
   private JLabel labelTime2;
+  private JLabel labelData;
   private JTextField fieldTime1;
   private JTextField fieldTime2;
+  private JTextField fieldData;
   private JLabel labelCidade;
   private JTextField fieldCidade;
   private JButton consultar;
@@ -43,6 +48,8 @@ public class ClienteCXF {
     this.fieldTime1 = new JTextField(30);
     this.labelTime2 = new JLabel("Informe o time 2: ");
     this.fieldTime2 = new JTextField(30);
+    this.labelData = new JLabel("Informe a data da Partida: ");
+    this.fieldData = new JTextField(10);
     this.labelCidade = new JLabel("Cidade (opcional): ");
     this.fieldCidade = new JTextField(30);
     this.consultar = new JButton("Consultar Partida");
@@ -51,11 +58,13 @@ public class ClienteCXF {
 
   public void exibeInterfaceGrafica() {
     panel.setLayout(new BorderLayout());
-    panelTimes.setLayout(new GridLayout(4, 2));
+    panelTimes.setLayout(new GridLayout(5, 2));
     panelTimes.add(labelTime1);
     panelTimes.add(fieldTime1);
     panelTimes.add(labelTime2);
     panelTimes.add(fieldTime2);
+    panelTimes.add(labelData);
+    panelTimes.add(fieldData);
     panelTimes.add(labelCidade);
     panelTimes.add(fieldCidade);
     consultar.addActionListener(new ActionListener() {
@@ -67,14 +76,24 @@ public class ClienteCXF {
         Client client = factory.createClient("http://localhost:8080/webservicecxf/ConsultaPartida?wsdl");
         try {
           /*
-           * Invoca o serviço através do nome da operação e informa os parâmetros necessários para a execução do mesmo
+           * Invoca o serviço através do nome da operação e 
+           * informa os parâmetros necessários para a execução do mesmo
            */
-          Object[] obj = client.invoke("consultaPartida", "Atético-MG", "Cruzeiro", null);
+          String[] dataSeparada = fieldData.getText().split("/");
+          XMLGregorianCalendar dataGregorian = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+          dataGregorian.setDay(new Integer(dataSeparada[0]));
+          dataGregorian.setMonth(new Integer(dataSeparada[1]));
+          dataGregorian.setYear(new Integer(dataSeparada[2]));
+          Object[] obj = client.invoke("consultaPartida", 
+              fieldTime1.getText(), fieldTime2.getText(), dataGregorian,
+              fieldCidade.getText());
           for (Object object : obj) {
             StringBuffer buffer = new StringBuffer();
             buffer.append("Time 1: " + ((Partida) object).getTime1());
             buffer.append("\n");
             buffer.append("Time 2: " + ((Partida) object).getTime2());
+            buffer.append("\n");
+            buffer.append("Data: " + ((Partida) object).getData());
             buffer.append("\n");
             buffer.append("Resultado: " + ((Partida) object).getResultado());
             buffer.append("\n");
@@ -118,6 +137,70 @@ public class ClienteCXF {
     ClienteCXF cliente = new ClienteCXF();
     cliente.exibeInterfaceGrafica();
 
+  }
+
+  public JLabel getLabelData() {
+    return labelData;
+  }
+
+  public void setLabelData(JLabel labelData) {
+    this.labelData = labelData;
+  }
+
+  public JTextField getFieldData() {
+    return fieldData;
+  }
+
+  public void setFieldData(JTextField fieldData) {
+    this.fieldData = fieldData;
+  }
+
+  public JLabel getLabelTime1() {
+    return labelTime1;
+  }
+
+  public void setLabelTime1(JLabel labelTime1) {
+    this.labelTime1 = labelTime1;
+  }
+
+  public JLabel getLabelTime2() {
+    return labelTime2;
+  }
+
+  public void setLabelTime2(JLabel labelTime2) {
+    this.labelTime2 = labelTime2;
+  }
+
+  public JTextField getFieldTime1() {
+    return fieldTime1;
+  }
+
+  public void setFieldTime1(JTextField fieldTime1) {
+    this.fieldTime1 = fieldTime1;
+  }
+
+  public JTextField getFieldTime2() {
+    return fieldTime2;
+  }
+
+  public void setFieldTime2(JTextField fieldTime2) {
+    this.fieldTime2 = fieldTime2;
+  }
+
+  public JLabel getLabelCidade() {
+    return labelCidade;
+  }
+
+  public void setLabelCidade(JLabel labelCidade) {
+    this.labelCidade = labelCidade;
+  }
+
+  public JTextField getFieldCidade() {
+    return fieldCidade;
+  }
+
+  public void setFieldCidade(JTextField fieldCidade) {
+    this.fieldCidade = fieldCidade;
   }
 
 }

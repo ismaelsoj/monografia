@@ -3,7 +3,7 @@ package br.com.ismael;
 import java.util.GregorianCalendar;
 
 /**
- * Classe que representa um jogo de futebol.
+ * Classe que representa uma partida de futebol.
  * 
  * @author Ismael
  * 
